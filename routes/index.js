@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('/Users/TILOOOR/Desktop/HelloUsers/lib/User.js');
+var User = require('/Users/TILOOOR/Desktop/App/getoout/lib/User.js');
 
 const mongoose = require('mongoose');
 
@@ -8,7 +8,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/myuser');
 
 //assuming app is express Object.
 router.get('/',function(req,res){
-     res.sendFile('/Users/TILOOOR/Desktop/HelloUsers/views/index.html');
+     res.sendFile('/Users/TILOOOR/Desktop/App/getoout/views/index.html');
 });
 
 
