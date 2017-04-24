@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var User = require('/Users/TILOOOR/Desktop/App/getoout/lib/User.js');
 
+// Create a Twilio REST API client for authentication
+var accountSid = 'AC114130e22d3f4ce7525ccbdf68c4271f'; // Your Account SID from www.twilio.com/console
+var authToken = 'b3b235f645a11041a110df812a590c38';
+var client = require("twilio")(accountSid, authToken);
 
 const mongoose = require('mongoose');
 
@@ -16,7 +20,16 @@ router.get('/login2',function(req,res){
      res.sendFile('/Users/TILOOOR/Desktop/App/getoout/public/gooey-menu/index.html');
 });
 
-
+router.get('/SMS', function(req, res){
+      client.messages.create({
+        to: '+16102564321',
+        from: "+14846794948",
+        body: "This is the ship that made the Kessel Run in fourteen parsecs?"
+    }, function(err, message) {
+        if (err) console.log(err);
+        res.send("DID THING")
+  });
+});
 
 /* GET home page.
 router.get('/', function(req, res, next) {
@@ -43,6 +56,12 @@ router.post('/login', function(req, res) {
     return res.status(200).send();
   })
 })
+
+
+
+
+
+
 
 
 router.get('/dashboard', function(req, res) {
