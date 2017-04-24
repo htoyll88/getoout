@@ -24,8 +24,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret:"okayokayokayokay",resave: false,saveUninitialized: true}));
-app.use(express.static('public'))
+app.use(session({secret: "fds", resave:false, saveUninitialized: true}))
+//app.use(express.static('public'))
 app.use('/', index);
 app.use('/users', users);
 

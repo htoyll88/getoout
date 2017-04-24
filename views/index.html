@@ -16,19 +16,19 @@
   <div class="card"></div>
   <div class="card">
     <h1 class="title">Login</h1>
-    <form action='/register' method="POST">
+    <form action='/login' method="POST">
       <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required"/>
+        <input type="#{type}" name="username" required="required"/>
         <label for="#{label}">Username</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input type="#{type}" id="#{label}" required="required"/>
+        <input type="#{type}" name="password" required="required"/>
         <label for="#{label}">Password</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <a href="gooey-menu/index.html"><button type="button"><span>Go</span></button></a>
+        <button type="submit"><span>Go</span></button>
       </div>
       <div class="footer"><a href="#">Forgot your password?</a></div>
     </form>
@@ -50,13 +50,8 @@
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input type="string" name="firstname" required="required"/>
-        <label for="firstname">First Name</label>
-        <div class="bar"></div>
-      </div>
-      <div class="input-container">
-        <input type="string" name="lastname" required="required"/>
-        <label for="lastname">Last name</label>
+        <input type="string" name="number" required="required"/>
+        <label for="number">Number</label>
         <div class="bar"></div>
       </div>
       <!--<div class="input-container">
