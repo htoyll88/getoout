@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var User = require('../lib/User.js');
 var path = require("path");
-
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 // Create a Twilio REST API client for authentication
 var accountSid = 'AC114130e22d3f4ce7525ccbdf68c4271f'; // Your Account SID from www.twilio.com/console
 var authToken = 'b3b235f645a11041a110df812a590c38';
@@ -10,8 +11,16 @@ var client = require("twilio")(accountSid, authToken);
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/myuser');
-//mongoose.connect('mongodb://127.0.0.1:27017/myuser');
+//mongoose.connect('mongodb://localhost/myuser');
+mongoose.connect('mongodb://127.0.0.1:27017/myuser');
+
+//mongoose.connect(process.env.MONGO_URL);
+
+// Configure our app
+const store = new MongoDBStore({
+  uri: process.env.MONGO_URL,
+  collection: 'sessions',
+});
 
 //assuming app is express Object.
 router.get('/',function(req,res){
