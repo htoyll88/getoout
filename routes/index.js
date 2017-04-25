@@ -46,10 +46,12 @@ router.post('/login', function(req, res) {
     if(err) {
       console.log(err);
       return res.status(500).send();
+      return res.redirect('/');
     }
 
     if(!user) {
       return res.status(404).send();
+
     }
     return res.redirect('/login2');
     req.session.user = user;
@@ -108,6 +110,9 @@ router.post('/register', function(req, res) {
     return res.status(200).send();
 
   })
+
+  res.redirect('/');
+
 })
 
 
