@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('./lib/User.js');
+var User = require('lib/User.js');
 
 // Create a Twilio REST API client for authentication
 var accountSid = 'AC114130e22d3f4ce7525ccbdf68c4271f'; // Your Account SID from www.twilio.com/console
