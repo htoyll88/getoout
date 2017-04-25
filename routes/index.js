@@ -10,7 +10,8 @@ var client = require("twilio")(accountSid, authToken);
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/myuser');
+mongoose.connect('mongodb://localhost/myuser');
+//mongoose.connect('mongodb://127.0.0.1:27017/myuser');
 
 //assuming app is express Object.
 router.get('/',function(req,res){
