@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var User = require('lib/User.js');
+var User = require('../lib/User.js');
+var path = require("path");
 
 // Create a Twilio REST API client for authentication
 var accountSid = 'AC114130e22d3f4ce7525ccbdf68c4271f'; // Your Account SID from www.twilio.com/console
@@ -13,11 +14,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/myuser');
 
 //assuming app is express Object.
 router.get('/',function(req,res){
-     res.sendFile('./views/index.html');
+     res.sendFile(path.resolve('views/index.html'));
 });
 
 router.get('/login2',function(req,res){
-     res.sendFile('./public/gooey-menu/index.html');
+  res.sendFile(path.resolve('public/gooey-menu/index.html'));
 });
 
 router.get('/SMS', function(req, res){
