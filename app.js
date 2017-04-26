@@ -8,8 +8,22 @@ var session = require('express-session');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+const MongoDBStore = require('connect-mongodb-session')(session);
+
 var app = express();
 
+
+const mongoose = require('mongoose');
+
+//mongoose.connect('mongodb://localhost/myuser');
+
+mongoose.connect(process.env.MONGO_URL);
+
+// Configure our app
+const store = new MongoDBStore({
+  uri: process.env.MONGO_URL,
+  collection: 'sessions',
+});
 
 
 // view engine setup
@@ -24,7 +38,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret: "fds", resave:false, saveUninitialized: true}))
+//app.use(session({secret: "fds", resave:false, saveUninitialized: true}))
 //app.use(express.static('public'))
 app.use('/', index);
 app.use('/users', users);
